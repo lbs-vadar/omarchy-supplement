@@ -56,7 +56,7 @@ deleted = "✘"
 # 7. Python (Added the snake icon)
 [python]
 symbol = "🐍 "
-format = "[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) "
+format = "[${symbol}${pyenv_prefix}(${version})(\\($virtualenv\\))]($style) "
 style = "bright-black"
 
 # 8. Command Duration (Yellow, only if > 2 seconds)
