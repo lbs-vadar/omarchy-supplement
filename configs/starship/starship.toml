@@ -1,0 +1,66 @@
+# ~/.config/starship.toml
+
+# 1. The Layout
+# We keep your specific order, but add standard spacing
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$cmd_duration\
+$line_break\
+$character"""
+
+# 2. General Settings
+add_newline = true
+command_timeout = 1000
+
+# 3. The Prompt Character (Your Classic Arrows)
+[character]
+success_symbol = "[❯](bold purple)"
+error_symbol = "[❯](bold red)"
+# Note: vimcmd_symbol requires enabling vi-mode in zsh to work visually
+vimcmd_symbol = "[❮](bold green)" 
+
+# 4. Directory (Blue, but limited to 3 folders deep)
+[directory]
+style = "bold blue"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " 🔒"
+
+# 5. Git Branch (Grey + Icon)
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bold bright-black"
+
+# 6. Git Status (Cleaned up)
+# We moved away from your complex format string to standard specific symbols
+# This is easier to read: "X" for delete, "+" for added, "!" for modified
+[git_status]
+style = "bold red"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "🏳"
+up_to_date = ""
+untracked = "🤷"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+stashed = "📦"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+# 7. Python (Added the snake icon)
+[python]
+symbol = "🐍 "
+format = "[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) "
+style = "bright-black"
+
+# 8. Command Duration (Yellow, only if > 2 seconds)
+[cmd_duration]
+min_time = 2000
+format = "took [$duration]($style) "
+style = "yellow"
