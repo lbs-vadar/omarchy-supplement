@@ -26,7 +26,10 @@ if [ -d "$DOTFILES_CONFIGS" ]; then
     # 2. Stow the Starship configuration (.config/starship.toml)
     stow -d "$DOTFILES_CONFIGS" -t "$HOME" starship
 
-    # 3. Stow Direnv configuration (if you have one, e.g., in configs/direnv)
+    # 3. Stow the NIX TEMPLATE (Links to ~/.config/nix/templates/default)
+    stow -d "$DOTFILES_CONFIGS" -t "$HOME" nix  # <--- ADD THIS LINE
+
+    # 4. Stow Direnv configuration (if you have one, e.g., in configs/direnv)
     # stow -d "$DOTFILES_CONFIGS" -t "$HOME" direnv 
 
 else
