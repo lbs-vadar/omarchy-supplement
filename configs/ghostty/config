@@ -5,7 +5,7 @@ config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 background-opacity = 0.9
 
 # Font
-font-family = "JetBrainsMono Nerd Font"
+font-family = "Monaspace Neon NF"
 font-style = Regular
 font-size = 10
 
@@ -43,6 +43,24 @@ mouse-hide-while-typing = true
 copy-on-select = true
 
 # Open the quick terminal
-initial-window = false
+initial-window = true 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\n
+
+# === MONASPACE TYPOGRAPHY FEATURES ===
+# Enable all Monaspace typography features
+font-feature = "calt"  # Contextual alternates (texture healing)
+font-feature = "liga"  # Ligatures
+font-feature = "ss01"  # != and ===
+font-feature = "ss02"  # <= and >=
+font-feature = "ss03"  # -> and ~>
+font-feature = "ss04"  # <> and </>
+font-feature = "ss05"  # @@ and ##
+font-feature = "ss06"  # ++ and --
+font-feature = "ss07"  # =* and *=
+font-feature = "ss08"  # == and !=
+font-feature = "ss09"  # >=> and <<=
+
+# Character variants for enhanced readability
+font-feature = "cv01=2"  # Slashed zero
+font-feature = "cv31=1"  # Six-pointed asterisk
