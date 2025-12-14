@@ -83,3 +83,27 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# --- Custom Nix Template Function ---
+# This function copies the Flake files from the stowed repository path
+# to the current directory, enabling quick project initialization.
+function nix-template-init() {
+    local TEMPLATE_DIR="/home/lbs-vadar/supplement/configs/nix/.config/nix/templates/default"
+    
+    if [ ! -d "$TEMPLATE_DIR" ]; then
+        echo "Error: Nix template source directory not found at $TEMPLATE_DIR"
+        return 1
+    fi
+
+    echo "🧱 Initializing Nix Flake environment from custom template..."
+    
+    # Copy the Flake files directly
+    cp "$TEMPLATE_DIR/flake.nix" .
+    cp "$TEMPLATE_DIR/flake.lock" .
+    
+    # Create the direnv file for automatic loading
+    echo 'use flake' > .envrc
+    
+    echo "✅ Flake initialization complete! Run 'direnv allow' to build the environment."
+}
+alias nix-init="nix-template-init"
