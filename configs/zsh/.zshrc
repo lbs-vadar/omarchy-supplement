@@ -107,3 +107,24 @@ function nix-template-init() {
     echo "✅ Flake initialization complete! Run 'direnv allow' to build the environment."
 }
 alias nix-init="nix-template-init"
+
+
+# --- FORCE VIM MODE FIX ---
+
+# 1. Ensure Vim mode is actually enabled
+bindkey -v
+
+# 2. Force ESC to switch to Normal Mode
+# '^[' is the code for the Escape key
+bindkey -M viins '^[' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode   # Optional: "jk" as a backup way to exit
+
+# 3. Set timeout to 10ms so it feels instant
+export KEYTIMEOUT=1
+
+# --- Edit Command Line in Editor ---
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+# Bind 'v' in Normal Mode to open the editor
+bindkey -M vicmd 'v' edit-command-line
